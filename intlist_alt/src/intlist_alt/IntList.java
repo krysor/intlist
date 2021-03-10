@@ -5,27 +5,37 @@ import java.util.stream.IntStream;
 
 public class IntList {
 
+	private int[] elements;
+	
 	/**
 	 * @creates | result
 	 * @basic
 	 */
-	public int[] getElements() { throw new RuntimeException("Not yet implemented");}
+	public int[] getElements() {
+		return elements; // fout
+	}
 	
 	/**
 	 * @post | result == getElements().length
 	 */
-	public int getLength() { throw new RuntimeException("Not yet implemented");}
+	public int getLength() {
+		return elements.length;
+	}
 	
 	/**
 	 * @pre | 0 <= index && index < getLength()
 	 * @post | result == getElements()[index]
 	 */
-	public int getElementAt(int index) { throw new RuntimeException("Not yet implemented");}
+	public int getElementAt(int index) {
+		return elements[index];
+	}
 	
 	/**
 	 * @post | getLength() == 0
 	 */	
-	public IntList() { throw new RuntimeException("Not yet implemented");}
+	public IntList() {
+		elements = new int[0];
+	}
 	
 	/**
 	 * @post | getLength() == old(getLength()) + 1
@@ -41,7 +51,12 @@ public class IntList {
 	 * // IntStream.range(a, b).allMatch(i -> uitspraak over i)
 	 * // forall i. a <= i < b ==> uitspraak over i
 	 */
-	public void addElement(int value) { throw new RuntimeException("Not yet implemented");}
+	public void addElement(int value) {
+		int[] newElements = new int[elements.length + 1];
+		System.arraycopy(elements, 0, newElements, 0, elements.length);
+		newElements[elements.length] = value;
+		elements = newElements;
+	}
 	
 	/**
 	 * @mutates | this
@@ -57,6 +72,6 @@ public class IntList {
 	 * // voorwaarde ? waar-waarde : onwaar-waarde
 	 */
 	public void setElement(int index, int value) {
-		
+		elements[index] = value;
 	}
 }
